@@ -435,7 +435,7 @@ public class ItemlistFragment extends ListFragment {
         }
     }
 
-    private void scrollToPlayingListItem(FeedItemlistAdapter adapter){
+    public void scrollToPlayingListItem(FeedItemlistAdapter adapter){
         if (adapter == null) {
             Log.e(TAG, "Unable to scroll to playing list item");
             return;
@@ -443,6 +443,8 @@ public class ItemlistFragment extends ListFragment {
         for (int position = 0; position < adapter.getCount(); position++) {
             if (adapter.getItem(position).getState() == FeedItem.State.PLAYING) {
                 getListView().setSelection(position);
+                //getListView().smoothScrollToPosition(position);
+                //getListView().scrollBy(0,50);
                 return;
             }
         }

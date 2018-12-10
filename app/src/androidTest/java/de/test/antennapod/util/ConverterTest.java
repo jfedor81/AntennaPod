@@ -2,6 +2,8 @@ package de.test.antennapod.util;
 
 import android.test.AndroidTestCase;
 
+import org.junit.Test;
+
 import de.danoeh.antennapod.core.util.Converter;
 
 /**
@@ -32,4 +34,5 @@ public class ConverterTest extends AndroidTestCase {
         long expected = 30600000;
         assertEquals(expected, Converter.durationStringShortToMs(input));
     }
+
 }

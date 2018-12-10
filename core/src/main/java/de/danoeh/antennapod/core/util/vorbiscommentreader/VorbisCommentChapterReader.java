@@ -1,11 +1,13 @@
 package de.danoeh.antennapod.core.util.vorbiscommentreader;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import de.danoeh.antennapod.core.BuildConfig;
+import de.danoeh.antennapod.core.R;
 import de.danoeh.antennapod.core.feed.Chapter;
 import de.danoeh.antennapod.core.feed.VorbisCommentChapter;
 
@@ -99,4 +101,13 @@ public class VorbisCommentChapterReader extends VorbisCommentReader {
 		return chapters;
 	}
 
+
+	Context mContext;
+    public VorbisCommentChapterReader(Context context) {
+        mContext = context;
+    }
+
+	public String getRandomString(){
+        return mContext.getString(R.string.new_label);
+    }
 }

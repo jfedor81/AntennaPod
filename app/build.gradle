@@ -3,6 +3,11 @@ import org.apache.tools.ant.filters.ReplaceTokens
 apply plugin: "com.android.application"
 apply plugin: 'com.github.triplet.play'
 apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'jacoco'
+
+
+
+
 
 repositories {
     maven { url "https://jitpack.io" }
@@ -15,6 +20,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.2'
+
     }
 }
 
@@ -43,7 +49,7 @@ android {
         versionCode getMyVersionCode()
         versionName "${getMyVersionName()}"
         testApplicationId "de.test.antennapod"
-        testInstrumentationRunner "de.test.antennapod.AntennaPodTestRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         generatedDensities = []
     }
 
@@ -91,6 +97,7 @@ android {
                     runOnEachPackage false                 
                 }
             }
+
         }
         release {
             resValue "string", "provider_authority", "de.danoeh.antennapod.provider"
@@ -118,6 +125,10 @@ android {
 
     aaptOptions {
         additionalParameters "--no-version-vectors"
+    }
+
+    testOptions {
+        animationsDisabled = true
     }
 
     flavorDimensions "market"
@@ -184,6 +195,11 @@ dependencies {
     implementation 'com.github.ByteHamster:SearchPreference:v1.0.8'
 
     androidTestImplementation "com.jayway.android.robotium:robotium-solo:$robotiumSoloVersion"
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-contrib:3.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-intents:3.0.2'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
 }
 
 play {
